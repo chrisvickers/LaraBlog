@@ -11,11 +11,39 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+/**
+ * ADMIN ROUTES
+ */
+Route::group(['prefix' => 'admin'], function()
+{
+	Route::get('/', array('as' => 'admin.index', 'uses' => 'AdminController@home'));
 
-Route::get('home', 'HomeController@index');
+	Route::match(array('GET','POST'),'login',array('as' => 'admin.login', 'uses' => 'AuthController@login'));
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+	Route::get('logout',array('as' => 'admin.logout', 'uses' => 'AuthController@logout'));
+	Route::get('register', array('as' => 'admin.register', 'uses' => 'AuthController@register'));
+	Route::match(array('GET','POST'),'forgotten-password', array('as' => 'admin.forgotten-password', 'uses' => 'AuthController@forgottenPassword'));
+
+	Route::post('store', array('as' => 'admin.store', 'uses' => 'AuthController@store'));
+});
+
+/**
+ * API ROUTES
+ */
+
+
+
+/**
+ * MAIN ROUTES
+ */
+
+//Home
+Route::Get('/', array('as' => 'MainController@home', 'uses' => 'MainController@home'));
+
+//Single Post
+Route::get('{year}/{month}/{day}/{slug}',array('as' => 'main.single-post', 'uses' => 'MainController@singlePost'));
+
+//Archives
+Route::get('{year}',array('as' => 'main.archive.year', 'uses' => 'ArchiveController@year'));
+Route::get('{year}/{month}', array('as' => 'main.archive.month', 'uses' => 'ArchiveController@month'));
+Route::Get('{year}/{month}/{day}', array('as' => 'main.archive.day', 'uses' => 'ArchiveController@day'));

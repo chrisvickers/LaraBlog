@@ -1,8 +1,3 @@
-/bootstrap/compiled.php
-.env.*.php
-.env.php
-
-
 # Created by https://www.gitignore.io
 
 ### Laravel ###
@@ -89,3 +84,4 @@ vendor/
 ### Sass ###
 .sass-cache
 *.css.map
+*.
