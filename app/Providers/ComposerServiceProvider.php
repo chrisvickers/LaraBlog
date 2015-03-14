@@ -3,6 +3,7 @@
 use App\Options;
 use View;
 use Route;
+use Auth;
 use Illuminate\Support\ServiceProvider;
 
 class ComposerServiceProvider extends ServiceProvider {
@@ -13,8 +14,17 @@ class ComposerServiceProvider extends ServiceProvider {
 	public function boot(Options $options)
 	{
 		//All Shares go in here
-		view()->share('blog_title',$options->where('handle','=','BLOG_TITLE')->first()->value);
-        view()->share('blog_description', $options->where('handle','=','BLOG_DESCRIPTION')->first()->value);
+        $title = $options->where('handle','=','BLOG_TITLE')->first();
+        if(isset($title))
+        {
+            view()->share('blog_title',$options->where('handle','=','BLOG_TITLE')->first()->value);
+        }
+
+        $description = $options->where('handle','=','BLOG_DESCRIPTION')->first();
+        if(isset($description))
+        {
+            view()->share('blog_description', $options->where('handle','=','BLOG_DESCRIPTION')->first()->value);
+        }
 	}
 
 	/**

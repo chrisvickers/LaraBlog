@@ -10,9 +10,6 @@ class BaseController extends Controller {
 
     public function __construct(Options $options)
     {
-        dd();
-        view()->share();
-        View::share('blog_title', $this->blog_title = $options->where('handle','=','BLOG_TITLE')->first()->value);
 
     }
 

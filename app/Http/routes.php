@@ -27,6 +27,20 @@ Route::group(['prefix' => 'admin'], function()
 	Route::post('store', array('as' => 'admin.store', 'uses' => 'AuthController@store'));
 });
 
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
+{
+   Route::get('dashboard',array('as' => 'admin.dashboard', 'uses' => 'AdminController@dashboard'));
+
+
+    //Settings
+    Route::group(['prefix' => 'settings',], function()
+    {
+
+        Route::get('/', array('as' => 'admin.settings', 'uses' => 'SettingsController@index'));
+        Route::get('/profile', array('as' => 'admin.settings.profile', 'uses' => 'SettingsController@profile'));
+    });
+});
+
 /**
  * API ROUTES
  */

@@ -144,12 +144,13 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-		'App\Providers\ComposerServiceProvider'
+		'App\Providers\ComposerServiceProvider',
 
 
 		/*
-		 * Customer Service Providers
+		 * Custom Service Providers
 		 */
+        'Illuminate\Html\HtmlServiceProvider'
 	],
 
 	/*
@@ -199,8 +200,10 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
 
 		/*
-		 * Customer Aliases
+		 * Custom Aliases
 		 */
+        'Form'=> 'Illuminate\Html\FormFacade',
+        'HTML'=> 'Illuminate\Html\HtmlFacade'
 
 	],
 

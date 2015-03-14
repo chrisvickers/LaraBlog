@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Options;
+use App\User;
 
 class DatabaseSeeder extends Seeder {
 
@@ -43,6 +44,18 @@ class OptionSeeder extends Seeder {
 			'handle'	=>	'BLOG_TITLE',
 			'value'		=>	'LaraBlog'
 		));
+
+        Options::create(array(
+            'type'      =>  'blog_description',
+            'handle'    =>  'BLOG_DESCRIPTION',
+            'value'     =>  'LaraBlog is Awesome'
+        ));
+
+        User::create(array(
+            'name'  =>  'Admin',
+            'email' =>  'admin@larablog.com',
+            'password'  =>  Hash::make('password'),
+        ));
 
 
 	}
