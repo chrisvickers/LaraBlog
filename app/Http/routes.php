@@ -38,12 +38,17 @@ Route::group(['prefix' => 'admin'], function()
  */
 
 //Home
-Route::Get('/', array('as' => 'MainController@home', 'uses' => 'MainController@home'));
+Route::Get('/', array('as' => 'main.home', 'uses' => 'MainController@home'));
 
 //Single Post
-Route::get('{year}/{month}/{day}/{slug}',array('as' => 'main.single-post', 'uses' => 'MainController@singlePost'));
+Route::get('{year}/{month}/{day}/{slug}',array('as' => 'main.single.post', 'uses' => 'MainController@single',function($id){}))
+    ->where(array('year' => '[0-9]+', 'month' => '[0-9]+', 'day' => '[0-9]+', 'slug' => '[a-z0-9-]+'));
 
 //Archives
-Route::get('{year}',array('as' => 'main.archive.year', 'uses' => 'ArchiveController@year'));
-Route::get('{year}/{month}', array('as' => 'main.archive.month', 'uses' => 'ArchiveController@month'));
-Route::Get('{year}/{month}/{day}', array('as' => 'main.archive.day', 'uses' => 'ArchiveController@day'));
+Route::get('/blog', array('as' => 'main.archive.all', 'uses' => 'ArchiveController@all'));
+Route::get('{year}', array('as' => 'main.archive.year', 'uses' => 'ArchiveController@year', function($id) {}))->where('year', '[0-9]+');
+Route::get('{year}/{month}', array('as' => 'main.archive.month', 'uses' => 'ArchiveController@month', function($id) {}))->where(array('month' => '[0-9]+', 'year' => '[0-9]+'));
+Route::get('{year}/{month}/{day}', array('as' => 'main.archive.day', 'uses' => 'ArchiveController@day', function($id){}))->where(array('day' => '[0-9]+', 'month' => '[0-9]+', 'year' => '[0-9]+'));
+
+//Page Not Post
+Route::get('/{page}', array('as' => 'main.page', 'uses' => 'MainController@page', function($id){}))->where(array('page' => '[a-z0-9-]+'));

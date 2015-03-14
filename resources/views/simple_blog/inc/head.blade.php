@@ -44,23 +44,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand" href="index.html">{{ $blog_title }}</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="{{ route('main.home') }}">Home</a>
                 </li>
                 <li>
-                    <a href="about.html">About</a>
+                    <a href="{{ route('main.page', array('page' => 'about-us')) }}">About</a>
                 </li>
                 <li>
-                    <a href="post.html">Sample Post</a>
+                    <a href="{{ route('main.archive.all') }}">Blog</a>
                 </li>
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="{{ route('main.page', array('page' => 'contact')) }}">Contact</a>
                 </li>
             </ul>
         </div>
@@ -78,7 +78,7 @@
                 <div class="site-heading">
                     <h1>{{ $blog_title }}</h1>
                     <hr class="small">
-                    <span class="subheading">A Clean Blog Theme by Start Bootstrap</span>
+                    <span class="subheading">{{ $blog_description }}</span>
                 </div>
             </div>
         </div>
