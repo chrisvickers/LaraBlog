@@ -55,6 +55,7 @@ class OptionSeeder extends Seeder {
             'name'  =>  'Admin',
             'email' =>  'admin@larablog.com',
             'password'  =>  Hash::make('password'),
+            'activated'   =>  true
         ));
 
 

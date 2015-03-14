@@ -44,6 +44,11 @@ class Authenticate {
 			}
 		}
 
+        if($this->auth->user()->activated != true)
+        {
+            return redirect()->guest('admin/login')->with('error','User is not activated');
+        }
+
 		return $next($request);
 	}
 

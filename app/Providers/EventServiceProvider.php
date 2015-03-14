@@ -11,8 +11,8 @@ class EventServiceProvider extends ServiceProvider {
 	 * @var array
 	 */
 	protected $listen = [
-		'event.name' => [
-			'EventListener',
+		'user.reset' => [
+			'App\Events\ResetUserEvent@reset',
 		],
 	];
 

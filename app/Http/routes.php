@@ -35,10 +35,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function()
     //Settings
     Route::group(['prefix' => 'settings',], function()
     {
-
         Route::get('/', array('as' => 'admin.settings', 'uses' => 'SettingsController@index'));
         Route::get('/profile', array('as' => 'admin.settings.profile', 'uses' => 'SettingsController@profile'));
+
     });
+
+    //Users
+    Route::resource('users', 'UserController');
+    Route::post('users/reset/{id}', array('as' => 'admin.user.reset', 'uses' => 'UserController@reset'));
 });
 
 /**

@@ -24,7 +24,7 @@ class AdminController extends Controller {
             return redirect()->route('admin.dashboard');
         }
 
-        return view('admin.login');
+        return view('admin.auth.login');
 	}
 
 

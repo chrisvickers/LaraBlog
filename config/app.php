@@ -203,7 +203,8 @@ return [
 		 * Custom Aliases
 		 */
         'Form'=> 'Illuminate\Html\FormFacade',
-        'HTML'=> 'Illuminate\Html\HtmlFacade'
+        'HTML'=> 'Illuminate\Html\HtmlFacade',
+        'Uuid' => 'Webpatser\Uuid\Uuid',
 
 	],
 
